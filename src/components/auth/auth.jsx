@@ -1,9 +1,13 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import axios from "axios";
+import { loginapi, singupapi } from "../../constant/api";
 
 export default function Auth() {
   const location = useLocation();
   const isSignup = location.pathname.includes("/signup");
+  const navigate = useNavigate();
 
   const [inputs, setInputs] = useState({
     name: "",
@@ -17,11 +21,47 @@ export default function Auth() {
     setInputs((prevValues) => ({ ...prevValues, [name]: value }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (isSignup) {
-      console.log("Signup details:", inputs);
+      try {
+        console.log("Signup details:", inputs);
+        const res = await axios.post(singupapi, {
+          Name: inputs?.name,
+          email: inputs?.email,
+          password: inputs?.password,
+          currentPassword: inputs?.confirmPassword,
+        });
+        if (res) {
+          toast.success(res?.data?.message);
+        }
+      } catch (error) {
+        console.log(error);
+        toast.error(error?.response?.data?.message);
+      }
     } else {
+      try {
+        const res = await axios.post(loginapi, {
+          email: inputs?.email,
+          password: inputs?.password,
+        });
+        if (res) {
+          toast.success(res?.data?.message);
+          console.log(res?.data?.data);
+          if (parseInt(res?.data?.data?.role) === 0) {
+            localStorage.setItem("token", res?.data?.data?.token);
+            localStorage.setItem("Role", res?.data?.data?.role);
+            navigate("/user");
+          } else {
+            localStorage.setItem("token", res?.data?.data?.token);
+            localStorage.setItem("Role", res?.data?.data?.role);
+            navigate("/admin");
+          }
+        }
+      } catch (error) {
+        console.log(error);
+        toast.error(error?.response?.data?.message);
+      }
       console.log("Login details:", {
         email: inputs.email,
         password: inputs.password,
@@ -48,7 +88,7 @@ export default function Auth() {
                   type="text"
                   name="name"
                   placeholder="Name"
-                  value={inputs.name}
+                  value={inputs?.name}
                   onChange={handleChange}
                   className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />

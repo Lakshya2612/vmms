@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { queryapi } from "../../constant/api";
+import { toast } from "react-toastify";
 
 export default function Contact() {
   const [inputs, setInputs] = useState({
@@ -13,19 +16,28 @@ export default function Contact() {
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(
-      "Name:",
-      inputs.name,
-      "Email:",
-      inputs.email,
-      "Phone:",
-      inputs.phone,
-      "Message:",
-      inputs.message
-    );
+    try {
+      const res = await axios.post(queryapi, {
+        Name: inputs?.name,
+        email: inputs?.email,
+        phoneNumber: inputs?.phone,
+        message: inputs?.message,
+      });
+      console.log(res);
+      if (res) {
+        toast.success(res.data.message);
+      }
+    } catch (error) {
+      if (error.response) {
+        toast.error(error.response.data.message);
+      } else if (error.request) {
+        toast.error("Failed to connect to the server");
+      } else {
+        toast.error("Network error occurred");
+      }
+    }
   };
 
   return (
