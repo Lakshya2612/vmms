@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { useState } from "react";
-import "./NavBar.css";
+import "./Navbar.css";
 import { HamburgetMenuClose, HamburgetMenuOpen } from "./Icons";
 import axios from "axios";
 import { toast } from "react-toastify";

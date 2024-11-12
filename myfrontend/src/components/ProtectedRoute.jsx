@@ -2,11 +2,14 @@ import React from "react";
 import { useAuth } from "./AuthContext";
 import { Navigate, Outlet, useLocation } from "react-router";
 import { toast } from "react-toastify";
+import { matchPath } from "react-router-dom";
 
 export default function ProtectedRoute() {
   const { role, isAuthenticated, loading } = useAuth();
   const location = useLocation();
-  if (!loading && !isAuthenticated && location.pathname === "/apply/:jobId") {
+  const isApplyingForJob = matchPath("/apply/:jobId", location.pathname);
+
+  if (!loading && !isAuthenticated && isApplyingForJob) {
     return <Navigate to="/login" />;
   }
 
