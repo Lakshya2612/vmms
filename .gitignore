@@ -1,0 +1,47 @@
+# Ignore node_modules folders in both frontend and backend
+myfrontend/node_modules/
+mybackend/node_modules/
+
+# Ignore log files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore build output
+myfrontend/build/
+mybackend/dist/
+myfrontend/.next/
+mybackend/.next/
+
+# Ignore environment files
+*.env
+*.env.local
+*.env.development
+*.env.production
+*.env.test
+
+# Ignore dependency directories
+myfrontend/.cache/
+mybackend/.cache/
+
+# Ignore package-lock.json or yarn.lock if you don't want them tracked
+# (Uncomment the following line if you want to ignore them)
+# package-lock.json
+# yarn.lock
+
+# Ignore OS-generated files (e.g., .DS_Store for macOS)
+.DS_Store
+
+# Ignore coverage folders (if using testing frameworks like Jest)
+coverage/
+
+# Ignore IDE/editor files (VSCode, JetBrains, etc.)
+.vscode/
+.idea/
+
+# Ignore any other system files
+Thumbs.db
+ehthumbs.db
+
+
