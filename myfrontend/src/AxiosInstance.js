@@ -31,7 +31,7 @@ axiosInstance.interceptors.response.use(
             
             try {
                 const response = await axios.post(
-                    "http://localhost:5173/api/v1/user/refreshtoken",
+                    "/api/v1/user/refreshtoken",
                     { refreshToken }
                 );
                 
@@ -43,7 +43,6 @@ axiosInstance.interceptors.response.use(
                 
                 return axiosInstance(originalRequest);
             } catch (err) {
-        console.error("Failed to refresh token:", err);
         return Promise.reject(err);
       }
     }

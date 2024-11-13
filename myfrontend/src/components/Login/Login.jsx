@@ -23,7 +23,7 @@ export default function Login() {
 
     try {
       const response = await axios.post("/api/v1/user/login", inputs);
-      console.log("Login successful:", response);
+      // console.log("Login successful:", response);
       setIsAuthenticated(true);
       setRole(response.data.data.user.role);
       toast.success(response.data.message || "Login successful!");

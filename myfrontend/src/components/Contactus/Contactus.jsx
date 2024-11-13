@@ -22,7 +22,7 @@ export default function Contact() {
         "/api/v1/contact/contactus",
         inputs
       );
-      console.log(response.data);
+      // console.log(response.data);
       toast.success(response.data.message);
       setInputs({
         fullname: "",
@@ -31,10 +31,11 @@ export default function Contact() {
         message: "",
       });
     } catch (error) {
-      console.error("Error:", error);
+      // console.error("Error:", error);
 
       if (error.response) {
         console.error("Response data:", error.response.data.message);
+        console.log(error.response);
         toast.error(error.response.data.message);
       } else {
         toast.error(error.response.data.message);

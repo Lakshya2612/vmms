@@ -12,10 +12,10 @@ import {
 } from "../controllers/user.controller.js";
 
 import { verifyJwt } from "../middlewares/auth.middleware.js";
-import multer from "multer";
+
 
 const router = Router();
-const upload = multer();
+
 
 router.route("/signup").post(registerUser);
 router.route("/login").post(loginUser);

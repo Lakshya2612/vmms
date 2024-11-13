@@ -20,9 +20,11 @@ export default function Navbar() {
       toast.success(response.data.message);
       setRole("");
       setIsAuthenticated(false);
+      handleClick();
       navigate("/");
     } catch (error) {
       toast.error(error.data.message);
+      handleClick();
     }
   };
 
@@ -36,12 +38,12 @@ export default function Navbar() {
         </NavLink>
 
         <ul className={click ? "nav-menu active" : "nav-menu"}>
-          <li className="nav-item">
+          <li className="nav-item" onClick={handleClick}>
             <NavLink to="/" activeclassname="active" className="nav-links">
               Home
             </NavLink>
           </li>
-          <li className="nav-item">
+          <li className="nav-item" onClick={handleClick}>
             <NavLink
               to="/aboutus"
               activeclassname="active"
@@ -51,7 +53,7 @@ export default function Navbar() {
             </NavLink>
           </li>
           {role === "admin" && (
-            <li className="nav-item">
+            <li className="nav-item" onClick={handleClick}>
               <NavLink
                 to="/admin"
                 activeclassname="active"
@@ -61,7 +63,7 @@ export default function Navbar() {
               </NavLink>
             </li>
           )}
-          <li className="nav-item">
+          <li className="nav-item" onClick={handleClick}>
             <NavLink
               to="/contactus"
               activeclassname="active"
@@ -70,13 +72,13 @@ export default function Navbar() {
               Contact Us
             </NavLink>
           </li>
-          <li className="nav-item">
+          <li className="nav-item" onClick={handleClick}>
             <NavLink to="/Jobs" activeclassname="active" className="nav-links">
               Jobs
             </NavLink>
           </li>
           {!isAuthenticated ? (
-            <li className="nav-item">
+            <li className="nav-item" onClick={handleClick}>
               <NavLink
                 to="/login"
                 activeclassname="active"

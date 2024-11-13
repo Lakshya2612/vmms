@@ -7,9 +7,10 @@ export const verifyJwt = asyncHandler(async (req, res, next) => {
   try {
     const token =
       req.cookies?.accessToken ||
-      req.header("Authorization")?.replace("Bearer ", "");
-    if (!token) {
-      throw new ApiError(401, "Unauthorized request");
+      (req.header("Authorization")?.startsWith("Bearer ") &&
+        req.header("Authorization").replace("Bearer ", "").trim())
+      if (!token) {
+      throw new ApiError(401, "Please Log in");
     }
     const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
     const user = await User.findById(decodedToken?._id).select(
@@ -22,7 +23,6 @@ export const verifyJwt = asyncHandler(async (req, res, next) => {
     next();
   } catch (error) {
     throw new ApiError(401, error?.message || "Invalid access token");
-    // throw new ApiError(401,"Please Login again");
   }
 });
 
@@ -32,7 +32,7 @@ export const authorizeRoles = (...roles) => {
       return next(
         new ApiError(
           403,
-          "you not allowed are not allowed to access this resource"
+          "you are not allowed are not allowed to access this resource"
         )
       );
     }
