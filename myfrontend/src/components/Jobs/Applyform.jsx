@@ -121,7 +121,7 @@ export default function Applyform() {
             Phone
           </label>
           <input
-            type="text"
+            type="number"
             id="phone"
             name="phone"
             value={inputs.phone}

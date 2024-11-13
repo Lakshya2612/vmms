@@ -22,7 +22,7 @@ const applicationSchema = new Schema(
       required: [true, "phone is required"],
     },
     photo: {
-      type: String,
+      type: Number,
       required: [true, "photo is required"],
     },
     resume: {

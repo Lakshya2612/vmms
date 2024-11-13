@@ -75,7 +75,7 @@ export default function Contact() {
               className="w-full max-w-md p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <input
-              type="tel"
+              type="number"
               name="phone"
               placeholder="Phone"
               value={inputs.phone}

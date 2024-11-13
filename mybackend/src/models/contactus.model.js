@@ -13,7 +13,7 @@ const contactusSchema = new Schema(
       validate: [validator.isEmail, "Please enter a valid email"],
     },
     phone: {
-      type: String,
+      type: Number,
       required: [true, "phone is required"],
     },
     message: {

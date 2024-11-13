@@ -37,7 +37,7 @@ function App() {
             <Route path="/forgetpassword" element={<Forgotpassword />} />
           </Route>
           <Route element={<ProtectedRoute />}>
-            <Route path="/resetpassword" element={<Resetpassword />} />
+            <Route path="/resetpassword/:token" element={<Resetpassword />} />
           </Route>
           <Route element={<ProtectedRoute />}>
             <Route path="/apply/:jobId" element={<Applyform />} />
