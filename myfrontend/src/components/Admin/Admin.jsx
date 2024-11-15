@@ -1,53 +1,31 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import axiosInstance from "../../AxiosInstance";
 import { FaEnvelope, FaTasks } from "react-icons/fa";
 
 export default function Admin() {
-  const fetchUser = async () => {
-    try {
-      const { data } = await axiosInstance.get("/api/v1/user/current-user");
-      console.log(data);
-    } catch (error) {
-      console.error("Error fetching user:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchUser();
-  }, []);
-
   return (
-    <div
-      className="flex bg-gray-100"
-      style={{ minHeight: "calc(100vh - 13rem)" }}
-    >
-      <div className="w-64 bg-[navy] text-white p-6 shadow-lg rounded-tr-lg rounded-br-lg">
-        <h2 className="text-3xl font-bold mb-8">Admin Dashboard</h2>
-        <ul className="space-y-6">
-          <li>
-            <Link
-              to="/admin/allapplications"
-              className="flex items-center text-lg font-semibold text-gray-300 hover:text-white transition-colors duration-300"
-            >
-              <FaTasks className="mr-2" /> All Applications
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/admin/allqueries"
-              className="flex items-center text-lg font-semibold text-gray-300 hover:text-white transition-colors duration-300"
-            >
-              <FaEnvelope className="mr-2" /> All Queries
-            </Link>
-          </li>
-        </ul>
+    <div className="bg-gray-100 p-10 sm:p-6">
+      <div className="flex justify-between sm:flex-col">
+        <h1 className="font-bold text-3xl sm:text-2xl">Admin Dashboard</h1>
+        <div className="flex sm:flex-col">
+          <Link
+            to="/admin/allapplications"
+            className="flex items-center text-gray-700 hover:text-blue-600 font-medium text-lg transition-colors duration-300"
+          >
+            <FaTasks className="mx-3" />
+            <span>All Applications</span>
+          </Link>
+          <Link
+            to="/admin/allqueries"
+            className="flex items-center text-gray-700 hover:text-blue-600 font-medium text-lg transition-colors duration-300"
+          >
+            <FaEnvelope className="mx-3" />
+            <span>All Queries</span>
+          </Link>
+        </div>
       </div>
-      <div className="flex-1 p-12 overflow-y-auto bg-white shadow-lg rounded-lg m-4">
-        <h1 className="text-4xl font-bold text-gray-900 mb-8">Welcome Back!</h1>
-        <p className="text-lg text-gray-700 mb-4">
-          Here you can manage all queries and applications.
-        </p>
+
+      <div className="mt-8 bg-white rounded-lg shadow-xl">
         <Outlet />
       </div>
     </div>

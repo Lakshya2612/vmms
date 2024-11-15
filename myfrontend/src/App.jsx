@@ -23,7 +23,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className="pages " style={{ minHeight: "calc(100vh - 13rem)" }}>
+      <div className="pages" style={{ minHeight: "calc(100vh - 13rem)" }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/aboutus" element={<Aboutus />} />

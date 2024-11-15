@@ -35,5 +35,5 @@ export default function ProtectedRoute() {
     return <Navigate to="/" />;
   }
 
-  return <div>{!loading && <Outlet />}</div>;
+  return <>{!loading && <Outlet />}</>;
 }
