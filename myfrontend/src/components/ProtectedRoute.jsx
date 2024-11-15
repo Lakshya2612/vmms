@@ -13,7 +13,13 @@ export default function ProtectedRoute() {
     return <Navigate to="/login" />;
   }
 
-  if (!loading && location.pathname === "/admin" && role !== "admin") {
+  if (
+    !loading &&
+    (location.pathname === "/admin" ||
+      location.pathname === "/admin/allapplication" ||
+      location.pathname === "/admin/allqueries") &&
+    role !== "admin"
+  ) {
     toast.error("Not Authorized");
     return <Navigate to="/" />;
   }

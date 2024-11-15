@@ -15,6 +15,9 @@ import Admin from "./components/Admin/Admin";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ProtectedRoute from "./components/ProtectedRoute";
+import GetAllApplications from "./components/Admin/GetAllApplications";
+import GetAllQueries from "./components/Admin/GetAllQueries";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
@@ -22,11 +25,13 @@ function App() {
       <Navbar />
       <div className="pages " style={{ minHeight: "calc(100vh - 13rem)" }}>
         <Routes>
-          {/* <Route path="/dashboard" element={<Dashboard />} /> */}
           <Route path="/" element={<Home />} />
           <Route path="/aboutus" element={<Aboutus />} />
           <Route path="/contactus" element={<Contactus />} />
-          <Route path="/jobs" element={<Jobs />} />
+          <Route path="/jobs" element={<Jobs />}></Route>
+          <Route element={<ProtectedRoute />}>
+            <Route path="/apply/:jobId" element={<Applyform />} />
+          </Route>
           <Route element={<ProtectedRoute />}>
             <Route path="/login" element={<Login />} />
           </Route>
@@ -40,11 +45,12 @@ function App() {
             <Route path="/resetpassword/:token" element={<Resetpassword />} />
           </Route>
           <Route element={<ProtectedRoute />}>
-            <Route path="/apply/:jobId" element={<Applyform />} />
+            <Route path="/admin" element={<Admin />}>
+              <Route path="allapplications" element={<GetAllApplications />} />
+              <Route path="allqueries" element={<GetAllQueries />} />
+            </Route>
           </Route>
-          <Route element={<ProtectedRoute />}>
-            <Route path="/admin" element={<Admin />} />
-          </Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
       <ToastContainer position="top-center" style={{ marginTop: "5rem" }} />

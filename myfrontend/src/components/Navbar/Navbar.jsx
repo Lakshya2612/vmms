@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { NavLink, Link, useLocation } from "react-router-dom";
+import React from "react";
+import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { useState } from "react";
 import "./Navbar.css";

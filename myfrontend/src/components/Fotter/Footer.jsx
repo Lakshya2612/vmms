@@ -14,7 +14,7 @@ export default function Fotter() {
       <span className="text-[white] flex items-center hover:text-[#f5b921] sm:text-sm">
         <IoIosMail />
         <a href="mailto:Vaishnomanpowerservices@gmail.com">
-          Vaishnomanpowerservices@gmail.com
+          vaishnomanpowerservices@gmail.com
         </a>
       </span>
       <span className="text-[white] flex items-center hover:text-[#f5b921] sm:text-sm">

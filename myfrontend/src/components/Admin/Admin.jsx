@@ -1,111 +1,55 @@
-import React, { useState, useEffect } from "react";
-import { toast } from "react-toastify";
+import React, { useEffect } from "react";
+import { Link, Outlet } from "react-router-dom";
 import axiosInstance from "../../AxiosInstance";
+import { FaEnvelope, FaTasks } from "react-icons/fa";
 
 export default function Admin() {
-  const [activeTab, setActiveTab] = useState("queries");
-  const [queries, setQueries] = useState([]);
-  const [applications, setApplications] = useState([]);
+  const fetchUser = async () => {
+    try {
+      const { data } = await axiosInstance.get("/api/v1/user/current-user");
+      console.log(data);
+    } catch (error) {
+      console.error("Error fetching user:", error);
+    }
+  };
 
   useEffect(() => {
-    const fetchQueries = async () => {
-      try {
-        const response = await axiosInstance.get(
-          "/api/v1/contact/getallqueries"
-        );
-        setQueries(response.data.data);
-      } catch (error) {
-        toast.error(error.response.data.message);
-        console.error("Error fetching queries:", error.response.data.message);
-      }
-    };
-
-    const fetchApplications = async () => {
-      try {
-        const response = await axiosInstance.get(
-          "/api/v1/application/getallapplication"
-        );
-        setApplications(response.data.data);
-      } catch (error) {
-        console.error(
-          "Error fetching applications:",
-          error.response.data.message
-        );
-      }
-    };
-
-    fetchQueries();
-    fetchApplications();
+    fetchUser();
   }, []);
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-lg">
-      <h1 className="text-2xl font-bold text-center text-gray-800 mb-4">
-        Hi Admin
-      </h1>
-      <div className="flex justify-center mb-4">
-        <button
-          className={`px-4 py-2 mx-2 rounded-lg text-white transition duration-300 
-                      ${
-                        activeTab === "queries"
-                          ? "bg-blue-600"
-                          : "bg-blue-400 hover:bg-blue-500"
-                      }`}
-          onClick={() => setActiveTab("queries")}
-        >
-          View Queries
-        </button>
-        <button
-          className={`px-4 py-2 mx-2 rounded-lg text-white transition duration-300 
-                      ${
-                        activeTab === "applications"
-                          ? "bg-blue-600"
-                          : "bg-blue-400 hover:bg-blue-500"
-                      }`}
-          onClick={() => setActiveTab("applications")}
-        >
-          View Applications
-        </button>
+    <div
+      className="flex bg-gray-100"
+      style={{ minHeight: "calc(100vh - 13rem)" }}
+    >
+      <div className="w-64 bg-[navy] text-white p-6 shadow-lg rounded-tr-lg rounded-br-lg">
+        <h2 className="text-3xl font-bold mb-8">Admin Dashboard</h2>
+        <ul className="space-y-6">
+          <li>
+            <Link
+              to="/admin/allapplications"
+              className="flex items-center text-lg font-semibold text-gray-300 hover:text-white transition-colors duration-300"
+            >
+              <FaTasks className="mr-2" /> All Applications
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/admin/allqueries"
+              className="flex items-center text-lg font-semibold text-gray-300 hover:text-white transition-colors duration-300"
+            >
+              <FaEnvelope className="mr-2" /> All Queries
+            </Link>
+          </li>
+        </ul>
       </div>
-
-      <section className="grid grid-cols-1 gap-4">
-        {activeTab === "queries"
-          ? queries.map((query) => (
-              <div
-                key={query._id}
-                className="border rounded-lg p-4 shadow-md bg-gray-50"
-              >
-                <h3 className="font-semibold text-lg">{query.name}</h3>
-                <p className="text-gray-600">Email: {query.email}</p>
-                <p className="text-gray-600">Phone: {query.phone}</p>
-                <p className="text-gray-800 mt-2">{query.message}</p>
-              </div>
-            ))
-          : applications.map((app) => (
-              <div
-                key={app._id}
-                className="border rounded-lg p-4 shadow-md bg-gray-50"
-              >
-                <h3 className="font-semibold text-lg">
-                  {app.firstName} {app.lastName}
-                </h3>
-                <p className="text-gray-600">Email: {app.email}</p>
-                <p className="text-gray-600">Phone: {app.phone}</p>
-                <div className="mt-2">
-                  <img
-                    src={app.url}
-                    alt={`${app.firstName}'s photo`}
-                    className="w-16 h-16 rounded-full"
-                  />
-                </div>
-                <p className="text-gray-800 mt-2">
-                  <a href={app.resume} className="text-blue-500 underline">
-                    View Resume
-                  </a>
-                </p>
-              </div>
-            ))}
-      </section>
+      <div className="flex-1 p-12 overflow-y-auto bg-white shadow-lg rounded-lg m-4">
+        <h1 className="text-4xl font-bold text-gray-900 mb-8">Welcome Back!</h1>
+        <p className="text-lg text-gray-700 mb-4">
+          Here you can manage all queries and applications.
+        </p>
+        <Outlet />
+      </div>
     </div>
   );
 }
