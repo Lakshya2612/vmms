@@ -31,7 +31,7 @@ export default function Applyform() {
 
     try {
       const response = await axiosInstance.post(
-        `https://vmms-kg7v.onrender.com/api/v1/application/submitapplication/${jobId}`,
+        `/api/v1/application/submitapplication/${jobId}`,
         formData,
         {
           headers: {

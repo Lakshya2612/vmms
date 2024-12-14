@@ -1,13 +1,14 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "https://vmms-kj74.onrender.com",
+  baseURL: "https://vmms-kg7v.onrender.com",
   headers: {
     Authorization: `Bearer ${document.cookie.replace(
       /(?:(?:^|.*;\s*)accessToken\s*=\s*([^;]*).*$)|^.*$/,
       "$1"
     )}`,
   },
+  withCredentials: true,
 });
 
 axiosInstance.interceptors.response.use(

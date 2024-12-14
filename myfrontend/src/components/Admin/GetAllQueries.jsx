@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Adminquerycard from "./Adminquerycard";
+import axiosInstance from "../../AxiosInstance";
 
 export default function GetAllQueries() {
   const [queries, setQueries] = useState([]);
@@ -9,8 +10,8 @@ export default function GetAllQueries() {
   useEffect(() => {
     const fetchQueries = async () => {
       try {
-        const response = await axios.get(
-          "https://vmms-kg7v.onrender.com/api/v1/contact/getallqueries",
+        const response = await axiosInstance.get(
+          "/api/v1/contact/getallqueries",
           { withCredentials: true }
         );
         setQueries(response.data.data);

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Adminapplicationcard from "./Adminappliationcard";
 import { toast } from "react-toastify";
+import axiosInstance from "../../AxiosInstance";
 
 export default function GetAllApplications() {
   const [applications, setApplications] = useState([]);
@@ -9,8 +10,8 @@ export default function GetAllApplications() {
   useEffect(() => {
     const fetchApplications = async () => {
       try {
-        const response = await axios.get(
-          "https://vmms-kg7v.onrender.com/api/v1/application/getallapplication",
+        const response = await axiosInstance.get(
+          "/api/v1/application/getallapplication",
           { withCredentials: true }
         );
         setApplications(response.data.data);

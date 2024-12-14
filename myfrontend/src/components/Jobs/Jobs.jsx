@@ -40,7 +40,7 @@ export default function Jobs() {
   const handleAddJob = async () => {
     try {
       const response = await axiosInstance.post(
-        "https://vmms-kg7v.onrender.com/api/v1/jobs/createjob",
+        "/api/v1/jobs/createjob",
         newJob,
         { withCredentials: true }
       );
