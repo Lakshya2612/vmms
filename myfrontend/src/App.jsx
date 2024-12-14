@@ -1,5 +1,5 @@
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./components/Home/Home";
 import Aboutus from "./components/Aboutus/Aboutus";
@@ -28,28 +28,27 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/aboutus" element={<Aboutus />} />
           <Route path="/contactus" element={<Contactus />} />
-          <Route path="/jobs" element={<Jobs />}></Route>
+          <Route path="/jobs" element={<Jobs />} />
+
           <Route element={<ProtectedRoute />}>
             <Route path="/apply/:jobId" element={<Applyform />} />
-          </Route>
-          <Route element={<ProtectedRoute />}>
             <Route path="/login" element={<Login />} />
-          </Route>
-          <Route element={<ProtectedRoute />}>
             <Route path="/signup" element={<Signup />} />
-          </Route>
-          <Route element={<ProtectedRoute />}>
             <Route path="/forgetpassword" element={<Forgotpassword />} />
-          </Route>
-          <Route element={<ProtectedRoute />}>
             <Route path="/resetpassword/:token" element={<Resetpassword />} />
           </Route>
+
+          <Route
+            path="/admin"
+            element={<Navigate to="/admin/allapplications" />}
+          />
           <Route element={<ProtectedRoute />}>
             <Route path="/admin" element={<Admin />}>
               <Route path="allapplications" element={<GetAllApplications />} />
               <Route path="allqueries" element={<GetAllQueries />} />
             </Route>
           </Route>
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
