@@ -5,7 +5,7 @@ import cookieParser from "cookie-parser";
 const app = express();
 
 app.use(cors({
-  origin:'https://vmms-kj74.onrender.com',
+  origin: process.env.URL,
   credentials: true
 }));
 
