@@ -14,7 +14,7 @@ export default function AuthProvider({ children }) {
 
   const checkAuthentication = async () => {
     try {
-      const { data } = await axiosInstance.get("/api/v1/user/current-user");
+      const { data } = await axiosInstance.get("https://vmms-kg7v.onrender.com/api/v1/user/current-user",{ withCredentials: true,});
       setRole(data.data.role);
       setIsAuthenticated(true);
     } catch (error) {
