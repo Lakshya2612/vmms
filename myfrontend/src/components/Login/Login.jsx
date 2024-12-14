@@ -24,7 +24,8 @@ export default function Login() {
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_BASE_URL}/api/v1/user/login`,
-        inputs
+        inputs,
+        { withCredentials: true }
       );
       // console.log("Login successful:", response);
       setIsAuthenticated(true);
