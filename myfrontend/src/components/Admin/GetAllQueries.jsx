@@ -9,7 +9,10 @@ export default function GetAllQueries() {
   useEffect(() => {
     const fetchQueries = async () => {
       try {
-        const response = await axios.get("/api/v1/contact/getallqueries");
+        const response = await axios.get(
+          "https://vmms-kg7v.onrender.com/api/v1/contact/getallqueries",
+          { withCredentials: true }
+        );
         setQueries(response.data.data);
       } catch (err) {
         toast.error(err.data.message);

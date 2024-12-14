@@ -22,7 +22,10 @@ export default function Login() {
     event.preventDefault();
 
     try {
-      const response = await axios.post("/api/v1/user/login", inputs);
+      const response = await axios.post(
+        "https://vmms-kg7v.onrender.com/api/v1/user/login",
+        inputs
+      );
       // console.log("Login successful:", response);
       setIsAuthenticated(true);
       setRole(response.data.data.user.role);

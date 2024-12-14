@@ -19,8 +19,9 @@ export default function Contact() {
     event.preventDefault();
     try {
       const response = await axiosInstance.post(
-        "/api/v1/contact/contactus",
-        inputs
+        "https://vmms-kg7v.onrender.com/api/v1/contact/contactus",
+        inputs,
+        { withCredentials: true }
       );
       // console.log(response.data);
       toast.success(response.data.message);

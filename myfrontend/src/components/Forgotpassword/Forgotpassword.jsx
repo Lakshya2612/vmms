@@ -20,7 +20,10 @@ export default function Forgotpassword() {
     event.preventDefault();
 
     try {
-      const response = await axios.post("/api/v1/user/forgotpassword", inputs);
+      const response = await axios.post(
+        "https://vmms-kg7v.onrender.com/api/v1/user/forgotpassword",
+        inputs
+      );
       console.log(response.data);
       toast.success(response.data.message);
       navigate("/login");

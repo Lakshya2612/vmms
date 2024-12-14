@@ -31,12 +31,13 @@ export default function Applyform() {
 
     try {
       const response = await axiosInstance.post(
-        `/api/v1/application/submitapplication/${jobId}`,
+        `https://vmms-kg7v.onrender.com/api/v1/application/submitapplication/${jobId}`,
         formData,
         {
           headers: {
             "Content-Type": "multipart/form-data",
           },
+          withCredentials: true,
         }
       );
       console.log("Application submitted:", response.data);

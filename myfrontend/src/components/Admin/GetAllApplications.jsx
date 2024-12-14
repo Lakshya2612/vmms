@@ -10,7 +10,8 @@ export default function GetAllApplications() {
     const fetchApplications = async () => {
       try {
         const response = await axios.get(
-          "/api/v1/application/getallapplication"
+          "https://vmms-kg7v.onrender.com/api/v1/application/getallapplication",
+          { withCredentials: true }
         );
         setApplications(response.data.data);
       } catch (err) {

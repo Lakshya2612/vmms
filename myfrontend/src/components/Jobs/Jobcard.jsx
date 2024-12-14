@@ -40,7 +40,8 @@ export default function JobCard({
   const handleDeleteClick = async () => {
     try {
       const response = await axiosInstance.delete(
-        `/api/v1/jobs/deletejob/${jobId}`
+        `https://vmms-kg7v.onrender.com/api/v1/jobs/deletejob/${jobId}`,
+        { withCredentials: true }
       );
       setjobs(Jobs.filter((job) => job._id !== jobId));
       toast.success(response.data.message);
@@ -55,8 +56,9 @@ export default function JobCard({
   const handleSaveEdit = async () => {
     try {
       const response = await axiosInstance.put(
-        `/api/v1/jobs/updatejob/${jobId}`,
-        editJobData
+        `https://vmms-kg7v.onrender.com/api/v1/jobs/updatejob/${jobId}`,
+        editJobData,
+        { withCredentials: true }
       );
       setjobs(
         Jobs.map((job) =>

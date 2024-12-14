@@ -27,8 +27,9 @@ export default function Resetpassword() {
 
     try {
       const response = await axios.put(
-        "/api/v1/user/resetpassword/:token",
-        inputs
+        "https://vmms-kg7v.onrender.com/api/v1/user/resetpassword/:token",
+        inputs,
+        { withCredentials: true }
       );
       console.log(response.data);
       toast.success(response.data.message);

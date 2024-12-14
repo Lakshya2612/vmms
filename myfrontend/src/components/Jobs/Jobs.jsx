@@ -24,7 +24,9 @@ export default function Jobs() {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const response = await axios.get("https://vmms-kj74.onrender.com/api/v1/jobs/getalljobs");
+        const response = await axios.get(
+          "https://vmms-kj74.onrender.com/api/v1/jobs/getalljobs"
+        );
         setJobs(response.data.data);
       } catch (err) {
         setError(err.message);
@@ -38,8 +40,9 @@ export default function Jobs() {
   const handleAddJob = async () => {
     try {
       const response = await axiosInstance.post(
-        "/api/v1/jobs/createjob",
-        newJob
+        "https://vmms-kg7v.onrender.com/api/v1/jobs/createjob",
+        newJob,
+        { withCredentials: true }
       );
       toast.success(response.data.message);
       setJobs([...jobs, response.data.data]);
