@@ -23,7 +23,7 @@ export default function Login() {
 
     try {
       const response = await axios.post(
-        "https://vmms-kg7v.onrender.com/api/v1/user/login",
+        `${import.meta.env.VITE_BASE_URL}/api/v1/user/login`,
         inputs
       );
       // console.log("Login successful:", response);

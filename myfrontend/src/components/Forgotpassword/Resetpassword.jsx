@@ -27,7 +27,7 @@ export default function Resetpassword() {
 
     try {
       const response = await axios.put(
-        "https://vmms-kg7v.onrender.com/api/v1/user/resetpassword/:token",
+        `${import.meta.env.VITE_BASE_URL}/api/v1/user/resetpassword/:token`,
         inputs,
         { withCredentials: true }
       );

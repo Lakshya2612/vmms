@@ -17,7 +17,7 @@ export default function Signup() {
   const handleSendOtp = async () => {
     try {
       const response = await axios.post(
-        "https://vmms-kg7v.onrender.com/api/v1/user/send-otp",
+        `${import.meta.env.VITE_BASE_URL}/api/v1/user/send-otp`,
         {
           email: inputs.email,
         }
@@ -44,7 +44,7 @@ export default function Signup() {
 
     try {
       const response = await axios.post(
-        "https://vmms-kg7v.onrender.com/api/v1/user/signup",
+        `${import.meta.env.VITE_BASE_URL}/api/v1/user/signup`,
         inputs
       );
       toast.success(response.data.message);

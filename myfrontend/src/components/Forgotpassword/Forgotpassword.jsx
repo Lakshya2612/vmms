@@ -21,7 +21,7 @@ export default function Forgotpassword() {
 
     try {
       const response = await axios.post(
-        "https://vmms-kg7v.onrender.com/api/v1/user/forgotpassword",
+        `${import.meta.env.VITE_BASE_URL}/api/v1/user/forgotpassword`,
         inputs
       );
       console.log(response.data);

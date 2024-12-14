@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "https://vmms-kg7v.onrender.com",
+  baseURL: import.meta.env.VITE_BASE_URL,
   headers: {
     Authorization: `Bearer ${document.cookie.replace(
       /(?:(?:^|.*;\s*)accessToken\s*=\s*([^;]*).*$)|^.*$/,
@@ -32,7 +32,7 @@ axiosInstance.interceptors.response.use(
             
             try {
                 const response = await axios.post(
-                    "https://vmms-kg7v.onrender.com/api/v1/user/refreshtoken",
+                    `${import.meta.env.VITE_BASE_URL}/api/v1/user/refreshtoken`,
                     { refreshToken },{ withCredentials: true,}
                 );
                 

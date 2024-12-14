@@ -25,7 +25,7 @@ export default function Jobs() {
     const fetchJobs = async () => {
       try {
         const response = await axios.get(
-          "https://vmms-kj74.onrender.com/api/v1/jobs/getalljobs"
+          `${import.meta.env.VITE_BASE_URL}/api/v1/jobs/getalljobs`
         );
         setJobs(response.data.data);
       } catch (err) {

@@ -17,7 +17,7 @@ export default function Navbar() {
   const handlelogout = async () => {
     try {
       const response = await axios.post(
-        "https://vmms-kg7v.onrender.com/api/v1/user/logout"
+        `${import.meta.env.VITE_BASE_URL}/api/v1/user/logout`
       );
       toast.success(response.data.message);
       setRole("");
