@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5173",
+  baseURL: "https://vmms-kj74.onrender.com",
   headers: {
     Authorization: `Bearer ${document.cookie.replace(
       /(?:(?:^|.*;\s*)accessToken\s*=\s*([^;]*).*$)|^.*$/,
