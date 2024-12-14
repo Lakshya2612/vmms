@@ -17,8 +17,7 @@ export default function Navbar() {
   const handlelogout = async () => {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/api/v1/user/logout`,
-        { withCredentials: true }
+        `${import.meta.env.VITE_BASE_URL}/api/v1/user/logout`
       );
       toast.success(response.data.message);
       setRole("");
