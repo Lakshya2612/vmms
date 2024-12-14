@@ -18,6 +18,7 @@ export default function Navbar() {
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_BASE_URL}/api/v1/user/logout`,
+        {},
         { withCredentials: true }
       );
       toast.success(response.data.message);
