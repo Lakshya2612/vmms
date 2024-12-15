@@ -22,7 +22,7 @@ export default function Navbar() {
         { withCredentials: true }
       );
       toast.success(response.data.message);
-      setRole("");
+      setRole("user");
       setIsAuthenticated(false);
       handleClick();
       navigate("/");
@@ -67,15 +67,17 @@ export default function Navbar() {
               </NavLink>
             </li>
           )}
-          <li className="nav-item" onClick={handleClick}>
-            <NavLink
-              to="/contactus"
-              activeclassname="active"
-              className="nav-links"
-            >
-              Contact Us
-            </NavLink>
-          </li>
+          {role === "user" && (
+            <li className="nav-item" onClick={handleClick}>
+              <NavLink
+                to="/contactus"
+                activeclassname="active"
+                className="nav-links"
+              >
+                Contact Us
+              </NavLink>
+            </li>
+          )}
           <li className="nav-item" onClick={handleClick}>
             <NavLink to="/Jobs" activeclassname="active" className="nav-links">
               Jobs

@@ -149,7 +149,7 @@ export default function Jobs() {
         </div>
       )}
 
-      {jobs.length > 0 ? (
+      {jobs && jobs.length > 0 ? (
         jobs.map((job) => (
           <Jobcard
             key={job._id}
