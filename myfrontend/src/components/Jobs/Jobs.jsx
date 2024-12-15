@@ -153,10 +153,10 @@ export default function Jobs() {
         jobs.map((job) => (
           <Jobcard
             key={job._id}
-            jobName={job.jobname}
-            jobDescription={job.jobdescription}
+            jobname={job.jobname}
+            jobdescription={job.jobdescription}
             openings={job.openings}
-            companyName={job.companyname}
+            companyname={job.companyname}
             salary={job.salary}
             experience={job.experience}
             jobId={job._id}

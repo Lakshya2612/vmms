@@ -6,10 +6,10 @@ import axiosInstance from "../../AxiosInstance";
 import { useAuth } from "../AuthContext";
 
 export default function JobCard({
-  jobName,
-  jobDescription,
+  jobname,
+  jobdescription,
   openings,
-  companyName,
+  companyname,
   salary,
   experience,
   jobId,
@@ -19,10 +19,10 @@ export default function JobCard({
   const { role } = useAuth();
   const [showEditJobModal, setShowEditJobModal] = useState(false);
   const [editJobData, setEditJobData] = useState({
-    jobName,
-    jobDescription,
+    jobname,
+    jobdescription,
     openings,
-    companyName,
+    companyname,
     salary,
     experience,
   });
@@ -55,11 +55,13 @@ export default function JobCard({
 
   const handleSaveEdit = async () => {
     try {
+      console.log(editJobData);
       const response = await axiosInstance.put(
         `/api/v1/jobs/updatejob/${jobId}`,
         editJobData,
         { withCredentials: true }
       );
+      console.log(response);
       setjobs(
         Jobs.map((job) =>
           job._id === jobId ? { ...job, ...editJobData } : job
@@ -77,14 +79,14 @@ export default function JobCard({
 
   return (
     <div className="m-4 p-4 rounded-lg bg-[#f9f9f9] border border-[#ccc] shadow-[0_2px_8px_rgba(0,0,0,0.1)]">
-      <h2 className="m-0 text-[1.5rem] font-semibold">{jobName}</h2>
-      <p className="text-[#555]">{jobDescription}</p>
+      <h2 className="m-0 text-[1.5rem] font-semibold">{jobname}</h2>
+      <p className="text-[#555]">{jobdescription}</p>
       <div className="mt-4">
         <p>
           <strong>Openings:</strong> {openings}
         </p>
         <p>
-          <strong>Company:</strong> {companyName}
+          <strong>Company:</strong> {companyname}
         </p>
         <p>
           <strong>Salary:</strong> {salary}
@@ -126,19 +128,19 @@ export default function JobCard({
             <input
               type="text"
               placeholder="Job Name"
-              value={editJobData.jobName}
+              value={editJobData.jobname}
               onChange={(e) =>
-                setEditJobData({ ...editJobData, jobName: e.target.value })
+                setEditJobData({ ...editJobData, jobname: e.target.value })
               }
               className="border p-2 mb-2 w-full"
             />
             <textarea
               placeholder="Job Description"
-              value={editJobData.jobDescription}
+              value={editJobData.jobdescription}
               onChange={(e) =>
                 setEditJobData({
                   ...editJobData,
-                  jobDescription: e.target.value,
+                  jobdescription: e.target.value,
                 })
               }
               className="border p-2 mb-2 w-full"
@@ -156,9 +158,9 @@ export default function JobCard({
             <input
               type="text"
               placeholder="Company Name"
-              value={editJobData.companyName}
+              value={editJobData.companyname}
               onChange={(e) =>
-                setEditJobData({ ...editJobData, companyName: e.target.value })
+                setEditJobData({ ...editJobData, companyname: e.target.value })
               }
               className="border p-2 mb-2 w-full"
             />
