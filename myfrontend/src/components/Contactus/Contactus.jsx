@@ -32,12 +32,7 @@ export default function Contact() {
         message: "",
       });
     } catch (error) {
-      if (error.response) {
-        console.error("Response data:", error.response.data.message);
-        toast.error(error.response.data.message);
-      } else {
-        toast.error(error.response.data.message);
-      }
+      toast.error(error.response.data.message);
     }
   };
 

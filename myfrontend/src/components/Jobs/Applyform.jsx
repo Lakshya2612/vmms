@@ -40,18 +40,11 @@ export default function Applyform() {
           withCredentials: true,
         }
       );
-      console.log("Application submitted:", response.data);
       toast.success(response.data.message);
       navigate("/");
     } catch (error) {
-      console.error("Error:", error);
-
-      if (error.response) {
-        console.error("Response data:", error.response.data.message);
-        toast.error(error.response.data.message);
-      } else {
-        toast.error("An unexpected error occurred.");
-      }
+      console.error(error);
+      toast.error("An unexpected error occurred.");
     }
   };
 
