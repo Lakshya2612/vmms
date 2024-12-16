@@ -11,7 +11,7 @@ app.use(cors({
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public"));
+app.use(express.static("./public/temp"));
 app.use(cookieParser());
 
 import userRouter from "./routes/user.routes.js";
