@@ -44,7 +44,9 @@ export default function Applyform() {
       navigate("/");
     } catch (error) {
       console.error(error);
-      toast.error("An unexpected error occurred.");
+      toast.error(
+        error.response.data.message || "An unexpected error occurred."
+      );
     }
   };
 
