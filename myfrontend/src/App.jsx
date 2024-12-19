@@ -38,11 +38,11 @@ function App() {
             <Route path="/resetpassword/:token" element={<Resetpassword />} />
           </Route>
 
-          <Route
-            path="/admin"
-            element={<Navigate to="/admin/allapplications" />}
-          />
           <Route element={<ProtectedRoute />}>
+            <Route
+              path="/admin"
+              element={<Navigate to="/admin/allapplications" />}
+            />
             <Route path="/admin" element={<Admin />}>
               <Route path="allapplications" element={<GetAllApplications />} />
               <Route path="allqueries" element={<GetAllQueries />} />
