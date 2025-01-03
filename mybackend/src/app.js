@@ -11,7 +11,8 @@ app.use(
     credentials: true,
   })
 );
-
+const __filename = new URL(import.meta.url).pathname;
+const __dirname = path.dirname(__filename);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "./public/temp")));
