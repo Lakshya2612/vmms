@@ -20,16 +20,14 @@ const submitapplication = asyncHandler(async (req, res) => {
   if (req.body.email !== req.user.email) {
     throw new ApiError(400, "Please use your own email");
   }
-  const photoLocalPath = req.files?.photo?.[0]?.path;
-  const resumeLocalPath = req.files?.resume?.[0]?.path;
-  if (!photoLocalPath) {
+  if (!req.files.photo) {
     throw new ApiError(400, "photo is required");
   }
-  if (!resumeLocalPath) {
+  if (!req.files.resume) {
     throw new ApiError(400, "resume is required");
   }
-  const photo = await fileupload(photoLocalPath);
-  const resume = await fileupload(resumeLocalPath);
+  const photo = await fileupload(req.files.photo[0]);
+  const resume = await fileupload(req.files.resume[0]);
   if (!photo) {
     throw new ApiError(400, "Photo upload failed");
   }
