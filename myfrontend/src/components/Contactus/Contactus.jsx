@@ -37,7 +37,10 @@ export default function Contact() {
   };
 
   return (
-    <div className="flex flex-col items-center bg-gradient-to-r from-blue-100 via-white to-blue-100 p-6">
+    <div
+      className="flex flex-col items-center bg-gradient-to-r from-blue-100 via-white to-blue-100 p-6"
+      style={{ minHeight: "calc(100vh - 13rem)" }}
+    >
       <div className="w-full max-w-3xl mt-10 p-6 bg-white rounded-lg shadow-md">
         <div className="flex justify-center items-center mb-6">
           <hr className="w-20 h-0.5 bg-blue-500 mr-2" />
