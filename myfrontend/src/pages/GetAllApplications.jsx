@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Adminapplicationcard from "./Adminappliationcard";
+import Adminapplicationcard from "../components/Admin/Adminappliationcard";
 import { toast } from "react-toastify";
-import axiosInstance from "../../AxiosInstance";
+import axiosInstance from "../AxiosInstance";
 
 export default function GetAllApplications() {
   const [applications, setApplications] = useState([]);

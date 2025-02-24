@@ -1,5 +1,5 @@
 import React from "react";
-import { useAuth } from "./AuthContext";
+import { useAuth } from "./auth/AuthContext";
 import { Navigate, Outlet, useLocation } from "react-router";
 import { toast } from "react-toastify";
 import { matchPath } from "react-router-dom";

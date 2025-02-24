@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FaEdit, FaTrash, FaPaperPlane } from "react-icons/fa";
 import { toast } from "react-toastify";
 import axiosInstance from "../../AxiosInstance";
-import { useAuth } from "../AuthContext";
+import { useAuth } from "../../auth/AuthContext";
 
 export default function JobCard({
   jobname,

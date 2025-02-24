@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import Adminquerycard from "./Adminquerycard";
-import axiosInstance from "../../AxiosInstance";
+import Adminquerycard from "../components/Admin/Adminquerycard";
+import axiosInstance from "../AxiosInstance";
 
 export default function GetAllQueries() {
   const [queries, setQueries] = useState([]);

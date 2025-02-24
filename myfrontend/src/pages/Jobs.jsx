@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Jobcard from "./Jobcard";
+import Jobcard from "../components/Jobs/Jobcard";
 import { FaPlus } from "react-icons/fa";
 import { toast } from "react-toastify";
-import axiosInstance from "../../AxiosInstance";
-import { useAuth } from "../AuthContext";
+import axiosInstance from "../AxiosInstance";
+import { useAuth } from "../auth/AuthContext";
 
 export default function Jobs() {
   const { role } = useAuth();

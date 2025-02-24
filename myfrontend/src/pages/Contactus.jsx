@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import axiosInstance from "../../AxiosInstance";
+import axiosInstance from "../AxiosInstance";
 
 export default function Contact() {
   const [inputs, setInputs] = useState({

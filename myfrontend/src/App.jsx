@@ -1,23 +1,23 @@
 import "./App.css";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
-import Home from "./components/Home/Home";
-import Aboutus from "./components/Aboutus/Aboutus";
+import Home from "./pages/Home";
+import Aboutus from "./pages/Aboutus";
 import Fotter from "./components/Fotter/Footer";
-import Contactus from "./components/Contactus/Contactus";
-import Jobs from "./components/Jobs/Jobs";
-import Login from "./components/Login/Login";
-import Signup from "./components/Signup/Signup";
-import Forgotpassword from "./components/Forgotpassword/Forgotpassword";
-import Resetpassword from "./components/Forgotpassword/Resetpassword";
-import Applyform from "./components/Jobs/Applyform";
-import Admin from "./components/Admin/Admin";
+import Contactus from "./pages/Contactus";
+import Jobs from "./pages/Jobs";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Forgotpassword from "./pages/Forgotpassword";
+import Resetpassword from "./pages/Resetpassword";
+import Applyform from "./pages/Applyform";
+import Admin from "./pages/Admin";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import ProtectedRoute from "./components/ProtectedRoute";
-import GetAllApplications from "./components/Admin/GetAllApplications";
-import GetAllQueries from "./components/Admin/GetAllQueries";
-import NotFound from "./components/NotFound";
+import ProtectedRoute from "./ProtectedRoute";
+import GetAllApplications from "./pages/GetAllApplications";
+import GetAllQueries from "./pages/GetAllQueries";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (

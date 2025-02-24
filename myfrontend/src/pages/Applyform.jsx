@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
-import axiosInstance from "../../AxiosInstance";
+import axiosInstance from "../AxiosInstance";
 
 export default function Applyform() {
   const { jobId } = useParams();

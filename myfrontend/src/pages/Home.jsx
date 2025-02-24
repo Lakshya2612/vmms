@@ -1,15 +1,15 @@
 import React from "react";
-import yogiji from "../../assets/yogiji2.png";
-import uttam from "../../assets/uttam.png";
-import VISHWAKARMA from "../../assets/VISHWAKARMA.png";
-import tiki from "../../assets/tiki tar.png";
-import Card from "../Card/Card";
-import shield from "../../assets/shield-check-mark-gradient.png";
-import guard from "../../assets/vecteezy_police-officer-vector-illustration_251401.jpg";
-import canteen from "../../assets/young-people-ordering-takeaway-coffee-cafe-barista-chat-network-flat-vector-illustration-hot-beverages-service.png";
-import housekeeping from "../../assets/cleaners-with-cleaning-products-housekeeping-service.png";
-import staffing from "../../assets/user_icon_007.jpg";
-import home from "../../assets/vecteezy_man-search-for-hiring-job-online-from-laptop-human_.jpg";
+import yogiji from "../assets/yogiji2.png";
+import uttam from "../assets/uttam.png";
+import VISHWAKARMA from "../assets/VISHWAKARMA.png";
+import tiki from "../assets/tiki tar.png";
+import Card from "../components/Card/Card";
+import shield from "../assets/shield-check-mark-gradient.png";
+import guard from "../assets/vecteezy_police-officer-vector-illustration_251401.jpg";
+import canteen from "../assets/young-people-ordering-takeaway-coffee-cafe-barista-chat-network-flat-vector-illustration-hot-beverages-service.png";
+import housekeeping from "../assets/cleaners-with-cleaning-products-housekeeping-service.png";
+import staffing from "../assets/user_icon_007.jpg";
+import home from "../assets/vecteezy_man-search-for-hiring-job-online-from-laptop-human_.jpg";
 
 export default function Home() {
   return (
@@ -66,27 +66,19 @@ export default function Home() {
         </span>
         <hr className="w-20 h-0.5 bg-blue-500 ml-2" />
       </div>
-      <div className="flex justify-center items-center flex-wrap gap-4 mt-4 mb-6 sm:gap-2">
-        <img
-          src={yogiji}
-          className="w-52 h-32 sm:w-36 sm:h-20"
-          alt="Client logo"
-        />
-        <img
-          src={uttam}
-          className="w-52 h-32 sm:w-36 sm:h-20"
-          alt="Client logo"
-        />
-        <img
-          src={VISHWAKARMA}
-          className="w-64 h-32 sm:w-36 sm:h-20"
-          alt="Client logo"
-        />
-        <img
-          src={tiki}
-          className="w-32 h-32 sm:w-36 sm:h-20"
-          alt="Client logo"
-        />
+      <div className="flex justify-center items-center flex-wrap gap-6 mt-4 mb-6 px-6 sm:gap-4">
+        <div className=" h-32 w-32 flex items-center justify-center">
+          <img src={yogiji} alt="Client logo" />
+        </div>
+        <div className=" h-32 w-32 flex items-center justify-center ">
+          <img src={uttam} alt="Client logo" />
+        </div>
+        <div className=" h-32 w-32 flex items-center justify-center">
+          <img src={VISHWAKARMA} alt="Client logo" />
+        </div>
+        <div className=" h-32 w-32 flex items-center justify-center">
+          <img src={tiki} alt="Client logo" />
+        </div>
       </div>
     </>
   );

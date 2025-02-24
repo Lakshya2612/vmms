@@ -7,7 +7,7 @@ import { HamburgetMenuClose, HamburgetMenuOpen } from "./Icons";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../AuthContext";
+import { useAuth } from "../../auth/AuthContext";
 
 export default function Navbar() {
   const { isAuthenticated, setIsAuthenticated, role, setRole } = useAuth();
